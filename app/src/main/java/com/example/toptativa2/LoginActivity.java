@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //if(notBlank(et_user)&&notBlank(et_pass))
+                startActivity(new Intent(LoginActivity.this,MenuActivity.class));
 
             }
         });
