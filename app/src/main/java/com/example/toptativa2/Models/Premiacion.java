@@ -6,6 +6,7 @@ public class Premiacion {
     private int id_usuario;
     private int id_publicacion;
     private String num_juego;
+    private int estado_numero;
 
 
     public int getId() {
@@ -38,5 +39,13 @@ public class Premiacion {
 
     public void setNum_juego(String num_juego) {
         this.num_juego = num_juego;
+    }
+
+    public int getEstado_numero() {
+        return estado_numero;
+    }
+
+    public void setEstado_numero(int estado_numero) {
+        this.estado_numero = estado_numero;
     }
 }

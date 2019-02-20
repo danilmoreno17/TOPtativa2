@@ -1,5 +1,6 @@
 package com.example.toptativa2.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -100,8 +101,27 @@ public class DetallesJuegoDataSource {
         return lista;
     }
 
+    private ContentValues detallejuegoValues(DetallesJuego dj){
+        ContentValues v = new ContentValues();
+        v.put(DataBaseHelper.ID_DETALLE_JUEGO,dj.getId());
+        v.put(DataBaseHelper.ID_JUEGO_DETALLE_JUEGO,dj.getId_juego());
+        v.put(DataBaseHelper.PREMIO_EFECTIVO,dj.getPremio_efectivo());
+        v.put(DataBaseHelper.PREMIO_NOMBRE,dj.getPremio_nombre());
+        v.put(DataBaseHelper.NUM_GANADOR,dj.getNum_ganador());
+        return v;
+    }
 
+    public long insert(DetallesJuego dj){
+        ContentValues v = detallejuegoValues(dj);
+        long resp = database.insert(DataBaseHelper.TBL_DETALLES_JUEGO,null,v);
+        return resp;
+    }
 
+    public long update(DetallesJuego dj){
+        ContentValues v =detallejuegoValues(dj);
+        long resp = database.update(DataBaseHelper.TBL_DETALLES_JUEGO,v,DataBaseHelper.ID_JUEGO_DETALLE_JUEGO+"="+dj.getId(),null);
+        return resp;
+    }
 
 
 }

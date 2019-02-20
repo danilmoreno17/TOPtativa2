@@ -43,11 +43,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String TBL_PUBLICACION = "publicacion";
     public static final String ID_PUBLICACION="id";
     public static final String ID_USUARIO_PUBLICACION="id_usuario";
+    public static final String ID_JUEGO_PUBLICACION="id_juego";
     public static final String ESTADO_PUBLICACION="estado";
     public static final String FECHA_PUBLICACION="fecha_publicacion";
+    public static final String FECHA_TOPE =  "fecha_tope";
 
     private static final String CREATE_PUBLICACION ="CREATE TABLE "+TBL_PUBLICACION+" ("+ID_PUBLICACION+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            ID_USUARIO_PUBLICACION+" INTEGER,"+ESTADO_PUBLICACION+" CHAR(3),"+FECHA_PUBLICACION+" VARCCHAR(50));";
+            ID_USUARIO_PUBLICACION+" INTEGER,"+ID_JUEGO_PUBLICACION+" INTEGER,"+ESTADO_PUBLICACION+" CHAR(3),"+FECHA_PUBLICACION+" VARCHAR(50),"+
+            FECHA_TOPE+" VARCHAR(50));";
 
 
     public static final String TBL_DETALLES_JUEGO="detalles_juego";
@@ -66,9 +69,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String ID_PREMIACION_USUARIO ="id_usuario";
     public static final String ID_PREMIACION_PUBLICACION="id_publicacion";
     public static final String NUM_JUEGO="num_juego";
+    public static final String ESTADO_NUMERO="estado_numero";
 
     private static final String CREATE_PREMIACION ="CREATE TABLE "+TBL_PREMIACION+" ("+ID_PREMIACION+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            ID_PREMIACION_PUBLICACION+" INTEGER,"+ID_PREMIACION_USUARIO+" INTEGER,"+NUM_JUEGO+" VARCHAR(30));";
+            ID_PREMIACION_PUBLICACION+" INTEGER,"+ID_PREMIACION_USUARIO+" INTEGER,"+NUM_JUEGO+" VARCHAR(30), "+ESTADO_NUMERO+" INTEGER DEFAULT 0);";
 
 
     public DataBaseHelper(Context c ){
