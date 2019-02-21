@@ -8,7 +8,15 @@ public class User {
     private String password;
     private String user_type;
     private int sus_method;
+    private int active;
 
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
 
     public int getId() {
         return id;

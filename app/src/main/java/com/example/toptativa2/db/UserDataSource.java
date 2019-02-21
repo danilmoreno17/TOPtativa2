@@ -1,6 +1,7 @@
 package com.example.toptativa2.db;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -14,11 +15,16 @@ public class UserDataSource {
             DataBaseHelper.EMAIL,
             DataBaseHelper.PASSWORD,
             DataBaseHelper.USER_TYPE,
-            DataBaseHelper.METHOD
+            DataBaseHelper.METHOD,
+            DataBaseHelper.ACTIVE
     };
 
     private SQLiteDatabase database;
     private DataBaseHelper dbhelper;
+
+    public UserDataSource(Context c){
+        dbhelper = new DataBaseHelper(c);
+    }
 
     public void open(){
         database=dbhelper.getReadableDatabase();
@@ -30,7 +36,6 @@ public class UserDataSource {
 
     private ContentValues userValues(User u){
         ContentValues v = new ContentValues();
-        v.put(DataBaseHelper.ID_USER,u.getId());
         if(!u.getFullname().toString().equals(""))
             v.put(DataBaseHelper.FULLNAME,u.getFullname());
         if(!u.getPassword().toString().equals(""))
@@ -39,6 +44,8 @@ public class UserDataSource {
             v.put(DataBaseHelper.EMAIL,u.getEmail());
         v.put(DataBaseHelper.METHOD,u.getSus_method());
         v.put(DataBaseHelper.USER_TYPE,u.getUser_type());
+        v.put(DataBaseHelper.ACTIVE,u.getActive());
+
 
         return v;
     }
@@ -78,6 +85,7 @@ public class UserDataSource {
                 u.setEmail(c.getString(c.getColumnIndex(DataBaseHelper.EMAIL)));
                 u.setSus_method(c.getInt(c.getColumnIndex(DataBaseHelper.METHOD)));
                 u.setUser_type(c.getString(c.getColumnIndex(DataBaseHelper.USER_TYPE)));
+                u.setActive(c.getInt(c.getColumnIndex(DataBaseHelper.ACTIVE)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,6 +107,7 @@ public class UserDataSource {
                 u.setEmail(c.getString(c.getColumnIndex(DataBaseHelper.EMAIL)));
                 u.setSus_method(c.getInt(c.getColumnIndex(DataBaseHelper.METHOD)));
                 u.setUser_type(c.getString(c.getColumnIndex(DataBaseHelper.USER_TYPE)));
+                u.setActive(c.getInt(c.getColumnIndex(DataBaseHelper.ACTIVE)));
             }
         } catch (Exception e) {
             e.printStackTrace();

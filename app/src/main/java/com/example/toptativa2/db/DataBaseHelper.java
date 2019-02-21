@@ -17,11 +17,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PASSWORD = "password";
     public static final String USER_TYPE = "user_type";
     public static final String METHOD = "sus_method";
+    public static final String ACTIVE = "active";
 
 
     private static final String CREATE_USER = "CREATE TABLE "+TBL_USER+"("+ID_USER+" INTEGER PRIMARY KEY AUTOINCREMENT, "+FULLNAME+" VARCHAR(50), "+
                                               EMAIL+" VARCHAR(50), "+PASSWORD+" VARCHAR(15), "+
-                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER );";
+                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER,"+ACTIVE+" INTEGER );";
 
 
     public static final String TBL_JUEGO="juego";
