@@ -97,6 +97,7 @@ public class LoginActivity extends Activity {
         try{
             ds.open();
             user=ds.getLoginUser(et_user.getText().toString());
+
         }catch(SQLException ex){
 
         }

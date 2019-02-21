@@ -72,6 +72,21 @@ public class UserDataSource {
     }
 
 
+    private long deleteSession(int id){
+        ContentValues v =new ContentValues();
+        v.put(DataBaseHelper.ACTIVE,0);
+        long resp = database.update(DataBaseHelper.TBL_USER,v,DataBaseHelper.ID_USER+"<>"+id,null);
+        return resp;
+    }
+
+    private long enableUser(int id){
+        ContentValues v =new ContentValues();
+        v.put(DataBaseHelper.ACTIVE,1);
+        long resp = database.update(DataBaseHelper.TBL_USER,v,DataBaseHelper.ID_USER+"="+id,null);
+        return resp;
+    }
+
+
     public User getLoginUser(String email){
         User u = null;
         Cursor c =null;
@@ -87,6 +102,8 @@ public class UserDataSource {
                 u.setSus_method(c.getInt(c.getColumnIndex(DataBaseHelper.METHOD)));
                 u.setUser_type(c.getString(c.getColumnIndex(DataBaseHelper.USER_TYPE)));
                 u.setActive(c.getInt(c.getColumnIndex(DataBaseHelper.ACTIVE)));
+                deleteSession(u.getId());
+                enableUser(u.getId());
             }
         } catch (Exception e) {
             e.printStackTrace();
