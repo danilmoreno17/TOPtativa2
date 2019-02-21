@@ -82,6 +82,7 @@ public class UserDataSource {
                 u=new User();
                 u.setId(c.getInt(c.getColumnIndex(DataBaseHelper.ID_USER)));
                 u.setFullname(c.getString(c.getColumnIndex(DataBaseHelper.FULLNAME)));
+                u.setPassword(c.getString(c.getColumnIndex(DataBaseHelper.PASSWORD)));
                 u.setEmail(c.getString(c.getColumnIndex(DataBaseHelper.EMAIL)));
                 u.setSus_method(c.getInt(c.getColumnIndex(DataBaseHelper.METHOD)));
                 u.setUser_type(c.getString(c.getColumnIndex(DataBaseHelper.USER_TYPE)));

@@ -144,8 +144,6 @@ public class FormUserActivity extends AppCompatActivity {
             u.setPassword(et_password.getText().toString());
             u.setSus_method(op);
             String type = iv_check.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.img_checkbox_checked).getConstantState())?"C":"J";
-
-            //String type = (iv_check.getDrawable() == R.drawable.img_checkbox_checked)?"C":"J";
             u.setUser_type(type);
             return (ds.insert(u)>0);
         }catch(SQLException ex){
