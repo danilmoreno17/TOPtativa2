@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFC50C</color>
     <color name="colorPrimaryDark">#E5B009</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FFC50C</color>
     <color name="colorGoogle">#D03E2F</color>
     <color name="colorBlue">#3F5996</color>
     <color name="colorTwitter">#29C5F6</color>

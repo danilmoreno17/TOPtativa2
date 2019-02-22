@@ -5,13 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context=".MenuActivity">
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_weight="0.8"
+        android:gravity="center|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardPreventCornerOverlap="false">
+            <ImageView
+                android:id="@+id/iv_user"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+        </android.support.v7.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-black"
+            android:textSize="22dp"
+            android:text="Daniel Moreno"
+            />
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvMenu"
+        android:layout_weight="0.2"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
 </LinearLayout>
