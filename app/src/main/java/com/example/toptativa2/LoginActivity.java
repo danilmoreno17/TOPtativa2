@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.toptativa2.Dialogs.InfoDialog;
 import com.example.toptativa2.Models.User;
 import com.example.toptativa2.db.UserDataSource;
-
 
 public class LoginActivity extends Activity {
 
@@ -45,9 +44,9 @@ public class LoginActivity extends Activity {
                 if(notBlank(et_user)&&notBlank(et_pass)){
                     user=loadUser();
                     if(user!=null){
-                        //if(user.getPassword().equals(et_pass.getText().toString())){
-                            startActivity(new Intent(LoginActivity.this,AdminActivity.class));
-                        /*}else{
+                        if(user.getPassword().equals(et_pass.getText().toString())){
+                            startActivity(new Intent(LoginActivity.this,MenuActivity.class));
+                        }else{
                             InfoDialog alert = new InfoDialog(LoginActivity.this,"Error","Password incorrecto", R.drawable.androidtutoria);
                             alert.OkButton("Ok",new DialogInterface.OnClickListener(){
                                 @Override
@@ -56,7 +55,7 @@ public class LoginActivity extends Activity {
                                 }
                             });
                             alert.make();
-                        }*/
+                        }
                     }else{
                         InfoDialog alert = new InfoDialog(LoginActivity.this,"Error","El usuario no existe", R.drawable.androidtutoria);
                         alert.OkButton("Ok",new DialogInterface.OnClickListener(){
@@ -84,7 +83,6 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,FormUserActivity.class));
-
             }
         });
     }
