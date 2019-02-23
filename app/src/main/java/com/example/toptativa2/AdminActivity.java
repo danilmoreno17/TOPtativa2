@@ -20,5 +20,11 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminActivity.this,CrearSorteoActivity.class));
             }
         });
+        cv_misSorteos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this,MisSorteosActivity.class));
+            }
+        });
     }
 }
