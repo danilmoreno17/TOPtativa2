@@ -112,11 +112,11 @@ public class UserDataSource {
     }
 
 
-    public User getUser(int id){
+    public User getUser(){
         User u = null;
         Cursor c =null;
         try {
-            c =database.query(DataBaseHelper.TBL_USER,allColumns,DataBaseHelper.ID_USER+"="+id,null,null,null,null);
+            c =database.query(DataBaseHelper.TBL_USER,allColumns,DataBaseHelper.ACTIVE+"=1",null,null,null,null);
             if(c.getCount()>0){
                 c.moveToFirst();
                 u=new User();

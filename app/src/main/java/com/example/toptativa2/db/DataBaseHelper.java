@@ -22,7 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_USER = "CREATE TABLE "+TBL_USER+"("+ID_USER+" INTEGER PRIMARY KEY AUTOINCREMENT, "+FULLNAME+" VARCHAR(50), "+
                                               EMAIL+" VARCHAR(50), "+PASSWORD+" VARCHAR(15), "+
-                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER,"+ACTIVE+" INTEGER );";
+                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER, "+ACTIVE+" INTEGER );";
 
 
     public static final String TBL_JUEGO="juego";

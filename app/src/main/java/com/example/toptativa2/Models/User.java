@@ -10,6 +10,8 @@ public class User {
     private int sus_method;
     private int active;
 
+
+
     public int getActive() {
         return active;
     }
