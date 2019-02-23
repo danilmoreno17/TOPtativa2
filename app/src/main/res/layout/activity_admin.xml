@@ -24,14 +24,14 @@
                 android:layout_height="100dp"/>
         </android.support.v7.widget.CardView>
         <TextView
-            android:id="@+id/tv_nom_user"
+            android:id="@+id/tvNombreUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textAlignment="center"
             android:fontFamily="sans-serif-black"
             android:textSize="22dp"
-            android:text="User"
+            android:text="Daniel Moreno"
             />
     </LinearLayout>
     <LinearLayout
