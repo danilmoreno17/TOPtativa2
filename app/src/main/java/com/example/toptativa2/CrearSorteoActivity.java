@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.toptativa2.Dialogs.InfoDialog;
 import com.example.toptativa2.Models.Juego;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 public class CrearSorteoActivity extends AppCompatActivity {
     EditText et_titulo, et_premio, et_valor, et_fechaSorteo, et_costo;
+    TextView tvNombreUsuario;
     private JuegoDataSource jds;
     private PublicacionDataSource pds;
     private User usuario;
@@ -27,10 +29,11 @@ public class CrearSorteoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_sorteo);
+        tvNombreUsuario = (TextView)findViewById(R.id.tv_nom_user);
         //Cargar Usuario
         if(((EurekaAppAplication)getApplication()).UsuarioActual!=null)
             usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
-
+        tvNombreUsuario.setText(usuario.getFullname());
         jds = new JuegoDataSource(this);
         pds = new PublicacionDataSource(this);
         et_titulo = (EditText)findViewById(R.id.et_titulo);

@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
                             ((EurekaAppAplication)getApplication()).UsuarioActual = user;
                             if(user.getUser_type().equals("C"))
                                 startActivity(new Intent(LoginActivity.this,AdminActivity.class));
-                            else
+                            else if(user.getUser_type().equals("J"))
                                 startActivity(new Intent(LoginActivity.this,MenuActivity.class));
                         }else{
                             InfoDialog alert = new InfoDialog(LoginActivity.this,"Error","Password incorrecto", R.drawable.androidtutoria);

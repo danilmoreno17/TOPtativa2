@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class LoteriaNacionalActivity extends AppCompatActivity {
+public class  LoteriaNacionalActivity extends AppCompatActivity {
     private ImageView ivloterianacional;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

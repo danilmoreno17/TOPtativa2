@@ -24,6 +24,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private TextView tv_nom_user;
     private UserDataSource ds;
+    private User usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,11 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         tv_nom_user=(TextView)findViewById(R.id.tv_nom_user);
-        ds= new UserDataSource(MenuActivity.this);
-        loadUser();
-
+        /*ds= new UserDataSource(MenuActivity.this);
+        loadUser();*/
+        if(((EurekaAppAplication)getApplication()).UsuarioActual!=null)
+            usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
+        tv_nom_user.setText(usuario.getFullname());
 
         RecyclerView mRecyclerView = findViewById(R.id.rvMenu);
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(MenuActivity.this, 2);

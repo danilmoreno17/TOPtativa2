@@ -16,16 +16,19 @@ public class AdminActivity extends AppCompatActivity {
 
     private TextView tv_nom_user;
     private UserDataSource ds;
+    private User usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        tv_nom_user=(TextView)findViewById(R.id.tv_nom_user);
-        ds= new UserDataSource(AdminActivity.this);
-        loadUser();
-
+        tv_nom_user=(TextView)findViewById(R.id.tvNombreUsuario);
+        if(((EurekaAppAplication)getApplication()).UsuarioActual!=null)
+            usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
+        /*ds= new UserDataSource(AdminActivity.this);
+        loadUser();*/
+        tv_nom_user.setText(usuario.getFullname().toString());
         cv_crearSorteo = (CardView) findViewById(R.id.cv_crearSorteo);
         cv_misSorteos = (CardView)findViewById(R.id.cv_misSorteos);
         cv_crearSorteo.setOnClickListener(new View.OnClickListener() {

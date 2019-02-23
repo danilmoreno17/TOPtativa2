@@ -40,6 +40,7 @@ public class PublicacionDataSource {
 
     private Publicacion cursorPublicacion(Cursor c){
         Publicacion p=new Publicacion();
+        p.setNombre_juego(c.getString(c.getColumnIndex(DataBaseHelper.NOMBRE_JUEGO)));
         p.setId(c.getInt(c.getColumnIndex(DataBaseHelper.ID_PUBLICACION)));
         p.setId_usuario(c.getInt(c.getColumnIndex(DataBaseHelper.ID_USUARIO_PUBLICACION)));
         p.setId_juego(c.getInt(c.getColumnIndex(DataBaseHelper.ID_JUEGO_PUBLICACION)));
