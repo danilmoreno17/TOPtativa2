@@ -14,7 +14,7 @@ import com.example.toptativa2.db.UserDataSource;
 public class AdminActivity extends AppCompatActivity {
     private CardView cv_crearSorteo, cv_misSorteos;
 
-    private TextView tv_nom_user;
+    private TextView tvNombreUsuario;
     private UserDataSource ds;
 
     @Override
@@ -22,7 +22,7 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        tv_nom_user=(TextView)findViewById(R.id.tv_nom_user);
+        tvNombreUsuario=(TextView)findViewById(R.id.tvNombreUsuario);
         ds= new UserDataSource(AdminActivity.this);
         loadUser();
 
@@ -47,7 +47,7 @@ public class AdminActivity extends AppCompatActivity {
         try{
             ds.open();
             usu = ds.getUser();
-            tv_nom_user.setText(usu.getFullname());
+            tvNombreUsuario.setText(usu.getFullname());
         }catch(SQLException e){
             e.printStackTrace();
         }
