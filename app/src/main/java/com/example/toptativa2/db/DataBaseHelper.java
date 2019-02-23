@@ -22,7 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_USER = "CREATE TABLE "+TBL_USER+"("+ID_USER+" INTEGER PRIMARY KEY AUTOINCREMENT, "+FULLNAME+" VARCHAR(50), "+
                                               EMAIL+" VARCHAR(50), "+PASSWORD+" VARCHAR(15), "+
-                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER,"+ACTIVE+" INTEGER );";
+                                              USER_TYPE+" CHAR(3),"+METHOD+" INTEGER, "+ACTIVE+" INTEGER );";
 
 
     public static final String TBL_JUEGO="juego";
@@ -32,12 +32,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PREMIO_MAYOR="premio_mayor";
     public static final String ESTADO_JUEGO="estado_juego";
     public static final String TIPO_JUEGO="tipo_juego";
+    public static final String NOMBRE_PREMIO="tipo_juego";
     public static final String CUOTA = "cuota";
 
 
     private static final String CREATE_JUEGO = "CREATE TABLE "+TBL_JUEGO+"("+ID_JUEGO+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
             FECHA_JUEGO+" VARCHAR(50), "+CUOTA+" REAL,"+
             NOMBRE_JUEGO+" VARCHAR(50), "+PREMIO_MAYOR+" REAL, "+
+            NOMBRE_PREMIO+" VARCHAR(50), "+
             ESTADO_JUEGO+" CHAR(3),"+TIPO_JUEGO+" CHAR(3) );";
 
 
