@@ -39,7 +39,8 @@ public class JuegoDataSource {
 
     public ContentValues juegoValues(Juego j){
         ContentValues v = new ContentValues();
-        v.put(DataBaseHelper.ID_JUEGO,j.getId());
+
+            //v.put(DataBaseHelper.ID_JUEGO,j.getId());
         if(!j.getFecha_juego().toString().equals(""))
             v.put(DataBaseHelper.FECHA_JUEGO,j.getFecha_juego());
         if(!j.getNombre_juego().toString().equals(""))
@@ -94,6 +95,23 @@ public class JuegoDataSource {
             ex.getMessage();
         }
         return lista;
+    }
+
+    public Juego juegoByNombre(String titulo){
+        Juego juego = new Juego();
+        Cursor c = null;
+        try{
+            String where= DataBaseHelper.ESTADO_JUEGO+"=1 and "+DataBaseHelper.NOMBRE_JUEGO+"="+titulo;
+            c=database.query(DataBaseHelper.TBL_JUEGO,allColumns,where,null,null,null,null);
+            c.moveToFirst();
+            while(!c.isAfterLast()){
+                juego = cursorJuego(c);
+                c.moveToNext();
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }
+        return juego;
     }
 
 

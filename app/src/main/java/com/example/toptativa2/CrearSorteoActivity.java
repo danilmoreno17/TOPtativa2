@@ -16,6 +16,7 @@ import com.example.toptativa2.db.JuegoDataSource;
 import com.example.toptativa2.db.PublicacionDataSource;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class CrearSorteoActivity extends AppCompatActivity {
     EditText et_titulo, et_premio, et_valor, et_fechaSorteo, et_costo;
@@ -56,7 +57,7 @@ public class CrearSorteoActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface alert, int which) {
                             alert.dismiss();
-                            Intent i = new Intent(CrearSorteoActivity.this,LoginActivity.class);
+                            Intent i = new Intent(CrearSorteoActivity.this,AdminActivity.class);
                             startActivity(i);
                         }
                     });
@@ -83,7 +84,23 @@ public class CrearSorteoActivity extends AppCompatActivity {
         try {
             jds.open();
             juego.setNombre_juego(et_titulo.getText().toString());
-            return ((jds.insert(juego)>0)&&(pds.insert(publicacion)>0));
+            juego.setPremio_mayor(Float.parseFloat(et_valor.getText().toString()));
+            juego.setCuota(Float.parseFloat(et_costo.getText().toString()));
+            juego.setFecha_juego(et_fechaSorteo.getText().toString());
+            juego.setEstado_juego("1");
+            juego.setTipo_juego("S");
+            boolean isInsertjds = (jds.insert(juego)>0);
+
+            pds.open();
+            publicacion.setId_juego(jds.juegoByNombre(juego.getNombre_juego()).getId());
+            publicacion.setId_usuario(usuario.getId());
+            publicacion.setFecha_publicacion(new Date().toString());
+            publicacion.setFecha_tope(juego.getFecha_juego());
+            publicacion.setNombre_juego(juego.getNombre_juego());
+            publicacion.setPremio_mayor(et_premio.getText().toString());
+            publicacion.setPremio_dinero(juego.getPremio_mayor());
+            publicacion.setEstado("1");
+            return (isInsertjds&&(pds.insert(publicacion)>0));
         }catch (Exception ex){
 
         }

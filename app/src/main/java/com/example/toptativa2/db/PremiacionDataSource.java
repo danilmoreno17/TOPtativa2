@@ -87,5 +87,23 @@ public class PremiacionDataSource {
 
         return lista;
     }
+    public ArrayList<Premiacion> premiacionListByPublicacion(int id_publicacion){
+
+        ArrayList<Premiacion> lista = new ArrayList<>();
+        Cursor c = null;
+        try{
+            String where= "WHERE "+DataBaseHelper.ID_PREMIACION_PUBLICACION+"="+id_publicacion;
+            c = database.query(DataBaseHelper.TBL_PREMIACION,allColumns,where,null,null,null,null);
+            c.moveToFirst();
+            while(!c.isAfterLast()){
+                lista.add(cursorPremiacion(c));
+                c.moveToNext();
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }
+
+        return lista;
+    }
 
 }

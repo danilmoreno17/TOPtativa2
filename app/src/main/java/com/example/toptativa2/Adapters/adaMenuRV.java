@@ -1,6 +1,7 @@
 package com.example.toptativa2.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.toptativa2.LoteriaNacionalActivity;
 import com.example.toptativa2.Models.Option;
 import com.example.toptativa2.R;
 
@@ -32,8 +34,21 @@ public class adaMenuRV extends RecyclerView.Adapter<OptionViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OptionViewHolder optionViewHolder, int i) {
+    public void onBindViewHolder(@NonNull OptionViewHolder optionViewHolder, final int i) {
         optionViewHolder.mImage.setImageResource(mOptionList.get(i).getImage());
+        optionViewHolder.mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (i){
+                    case 3:
+                        Intent intent = new Intent(mContext.getApplicationContext(),LoteriaNacionalActivity.class);
+                        mContext.startActivity(intent);
+                    break;
+                    default:
+                    break;
+                }
+            }
+        });
         optionViewHolder.mTitle.setText(mOptionList.get(i).getTitle());
     }
 
