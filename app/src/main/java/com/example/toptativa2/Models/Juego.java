@@ -8,6 +8,15 @@ public class Juego {
     private String estado_juego;
     private String tipo_juego;
     private float cuota;
+    private String nombre_premio;
+
+    public String getNombre_premio() {
+        return nombre_premio;
+    }
+
+    public void setNombre_premio(String nombre_premio) {
+        this.nombre_premio = nombre_premio;
+    }
 
     public int getId() {
         return id;

@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
                         int position = recyclerView.getChildAdapterPosition(child);
 
                         if(position==0){//warehouse
-                           i = new Intent(MenuActivity.this,MisSorteosActivity.class);
+                           i = new Intent(MenuActivity.this,AdminActivity.class);
                         }
 
 
@@ -99,6 +99,5 @@ public class MenuActivity extends AppCompatActivity {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
     }
 }

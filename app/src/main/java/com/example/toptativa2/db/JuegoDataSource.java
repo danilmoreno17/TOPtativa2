@@ -39,7 +39,6 @@ public class JuegoDataSource {
 
     public ContentValues juegoValues(Juego j){
         ContentValues v = new ContentValues();
-        v.put(DataBaseHelper.ID_JUEGO,j.getId());
         if(!j.getFecha_juego().toString().equals(""))
             v.put(DataBaseHelper.FECHA_JUEGO,j.getFecha_juego());
         if(!j.getNombre_juego().toString().equals(""))

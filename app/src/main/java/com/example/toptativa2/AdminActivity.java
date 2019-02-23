@@ -25,7 +25,7 @@ public class AdminActivity extends AppCompatActivity {
         tv_nom_user=(TextView)findViewById(R.id.tv_nom_user);
         ds= new UserDataSource(AdminActivity.this);
         loadUser();
-        
+
         cv_crearSorteo = (CardView) findViewById(R.id.cv_crearSorteo);
         cv_misSorteos = (CardView)findViewById(R.id.cv_misSorteos);
         cv_crearSorteo.setOnClickListener(new View.OnClickListener() {
