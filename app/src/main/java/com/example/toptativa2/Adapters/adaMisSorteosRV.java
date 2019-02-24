@@ -8,19 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.toptativa2.Models.Juego;
+import com.example.toptativa2.Models.Premiacion;
+import com.example.toptativa2.Models.Publicacion;
 import com.example.toptativa2.R;
+import com.example.toptativa2.db.PremiacionDataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class adaMisSorteosRV extends RecyclerView.Adapter<JuegoViewHolder>{
-
+    private PremiacionDataSource pds;
     private Context mContext;
-    private List<Juego> mJuegoList;
+    private List<Publicacion> mPublicacionList;
 
-    public adaMisSorteosRV(Context _pContext, List<Juego> _pJuegoList){
+    public adaMisSorteosRV(Context _pContext, List<Publicacion> _pPublicacionList){
         this.mContext = _pContext;
-        this.mJuegoList = _pJuegoList;
+        this.mPublicacionList = _pPublicacionList;
+        pds = new PremiacionDataSource(mContext);
     }
 
     @NonNull
@@ -32,14 +36,22 @@ public class adaMisSorteosRV extends RecyclerView.Adapter<JuegoViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull JuegoViewHolder juegoViewHolder, int i) {
-        juegoViewHolder.mNombreJuego.setText(mJuegoList.get((i)).getNombre_juego());
-        juegoViewHolder.mNumTicket.setText("3 tickets comprados");
-        juegoViewHolder.mFechaPremio.setText(mJuegoList.get(i).getFecha_juego());
+
+        juegoViewHolder.mNombreJuego.setText(mPublicacionList.get((i)).getNombre_juego());
+        try {
+            List<Premiacion> mPremiacionList = new ArrayList<>();
+            pds.open();
+            mPremiacionList = pds.premiacionListByPublicacion(mPublicacionList.get(i).getId());
+            juegoViewHolder.mNumTicket.setText(mPremiacionList.size()+" tickets comprados");
+        }catch (Exception e){
+
+        }
+        juegoViewHolder.mFechaPremio.setText(mPublicacionList.get(i).getFecha_tope());
     }
 
     @Override
     public int getItemCount() {
-        return mJuegoList.size();
+        return mPublicacionList.size();
     }
 }
 class JuegoViewHolder extends RecyclerView.ViewHolder{

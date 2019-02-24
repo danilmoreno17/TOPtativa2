@@ -29,7 +29,7 @@ public class PublicacionDataSource {
 
     private ContentValues publicacionValues(Publicacion p){
         ContentValues v = new ContentValues();
-        v.put(DataBaseHelper.ID_PUBLICACION,p.getId());
+        //v.put(DataBaseHelper.ID_PUBLICACION,p.getId());
         v.put(DataBaseHelper.ID_USUARIO_PUBLICACION,p.getId_usuario());
         v.put(DataBaseHelper.ID_JUEGO_PUBLICACION,p.getId_juego());
         v.put(DataBaseHelper.ESTADO_PUBLICACION,p.getEstado());
@@ -40,6 +40,7 @@ public class PublicacionDataSource {
 
     private Publicacion cursorPublicacion(Cursor c){
         Publicacion p=new Publicacion();
+        p.setNombre_juego(c.getString(c.getColumnIndex(DataBaseHelper.NOMBRE_JUEGO)));
         p.setId(c.getInt(c.getColumnIndex(DataBaseHelper.ID_PUBLICACION)));
         p.setId_usuario(c.getInt(c.getColumnIndex(DataBaseHelper.ID_USUARIO_PUBLICACION)));
         p.setId_juego(c.getInt(c.getColumnIndex(DataBaseHelper.ID_JUEGO_PUBLICACION)));
@@ -78,7 +79,7 @@ public class PublicacionDataSource {
                     tabla_principal+"."+DataBaseHelper.ESTADO_PUBLICACION+","+
                     tabla_principal+"."+DataBaseHelper.FECHA_PUBLICACION+","+
                     tabla_principal+"."+DataBaseHelper.FECHA_TOPE+","+
-                    tabla_juego+"."+DataBaseHelper.NOMBRE_JUEGO+" "+
+                    tabla_juego+"."+DataBaseHelper.NOMBRE_JUEGO+","+
                     tabla_juego+"."+DataBaseHelper.PREMIO_MAYOR+" "+
                     "FROM "+tabla_principal+" " +
                     "INNER JOIN "+tabla_juego+" ON "+tabla_juego+"."+DataBaseHelper.ID_JUEGO+"="+tabla_principal+"."+DataBaseHelper.ID_JUEGO_PUBLICACION+" "+

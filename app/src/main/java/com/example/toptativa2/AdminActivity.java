@@ -14,18 +14,21 @@ import com.example.toptativa2.db.UserDataSource;
 public class AdminActivity extends AppCompatActivity {
     private CardView cv_crearSorteo, cv_misSorteos;
 
-    private TextView tvNombreUsuario;
+    private TextView tv_nom_user;
     private UserDataSource ds;
+    private User usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        tvNombreUsuario=(TextView)findViewById(R.id.tvNombreUsuario);
-        ds= new UserDataSource(AdminActivity.this);
-        loadUser();
-
+        tv_nom_user=(TextView)findViewById(R.id.tvNombreUsuario);
+        if(((EurekaAppAplication)getApplication()).UsuarioActual!=null)
+            usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
+        /*ds= new UserDataSource(AdminActivity.this);
+        loadUser();*/
+        tv_nom_user.setText(usuario.getFullname().toString());
         cv_crearSorteo = (CardView) findViewById(R.id.cv_crearSorteo);
         cv_misSorteos = (CardView)findViewById(R.id.cv_misSorteos);
         cv_crearSorteo.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +50,7 @@ public class AdminActivity extends AppCompatActivity {
         try{
             ds.open();
             usu = ds.getUser();
-            tvNombreUsuario.setText(usu.getFullname());
+            tv_nom_user.setText(usu.getFullname());
         }catch(SQLException e){
             e.printStackTrace();
         }
