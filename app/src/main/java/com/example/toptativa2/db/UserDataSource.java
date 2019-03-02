@@ -3,6 +3,7 @@ package com.example.toptativa2.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.toptativa2.Models.User;
@@ -131,6 +132,24 @@ public class UserDataSource {
             e.printStackTrace();
         }
         return u;
+    }
+
+
+    public int getLast(){
+        int id =0;
+        Cursor c = null;
+        try{
+
+            String query = "SELECT last_insert_rowid() FROM "+DataBaseHelper.TBL_USER+" LIMIT 1;";
+            c = database.rawQuery(query, null);
+            if(c.getCount()>0){
+                c.moveToFirst();
+                id=c.getInt(c.getInt(0));
+            }
+        }catch(SQLException ex){
+            id=0;
+        }
+        return id;
     }
 
 

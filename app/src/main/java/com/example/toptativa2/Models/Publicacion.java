@@ -7,11 +7,20 @@ public class Publicacion {
     private String estado;
     private String fecha_publicacion;
     private String fecha_tope;
+    private String numero_premiado;
 
     private String nombre_juego;
     private String premio_mayor;
     private float premio_dinero;
 
+
+    public String getNumero_premiado() {
+        return numero_premiado;
+    }
+
+    public void setNumero_premiado(String numero_premiado) {
+        this.numero_premiado = numero_premiado;
+    }
 
     public int getId_juego() {
         return id_juego;

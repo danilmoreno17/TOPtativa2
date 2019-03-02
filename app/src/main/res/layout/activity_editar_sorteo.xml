@@ -40,6 +40,39 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/loteria" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp">
+
+                <EditText
+                    android:id="@+id/et_numero_ganador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Numero ganador"
+                    android:inputType="text"
+                    android:singleLine="true" />
+
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="match_parent"
@@ -66,6 +99,8 @@
                     android:hint="Titulo"
                     android:inputType="text"
                     android:singleLine="true" />
+
+
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -114,14 +149,13 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="32dp">
 
-                <EditText
-                    android:id="@+id/et_valor"
+                <TextView
+                    android:id="@+id/tv_valor_premio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Valor"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true" />
+                    android:layout_weight="1"
+                    android:textSize="22dp"
+                    android:text="Premio" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -141,14 +175,13 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="32dp">
 
-                <EditText
-                    android:id="@+id/et_fechaSorteo"
+                <TextView
+                    android:id="@+id/tv_fecha_juego"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Fecha del Sorteo"
-                    android:inputType="none"
-                    android:singleLine="true" />
+                    android:layout_weight="1"
+                    android:textSize="22dp"
+                    android:text="Fecha" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -170,16 +203,16 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="32dp">
 
-                <EditText
-                    android:id="@+id/et_costo"
+                <TextView
+                    android:id="@+id/tv_costo_juego"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Costo del Sorteo"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true" />
+                    android:layout_weight="1"
+                    android:textSize="22dp"
+                    android:text="Costo" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
 

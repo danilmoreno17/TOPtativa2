@@ -62,7 +62,7 @@ public class CrearSorteoActivity extends AppCompatActivity {
             usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
 
         iv_User=(ImageView)findViewById(R.id.iv_user);
-        loadImageFromStorage(usuario.getUrlImage());
+        //loadImageFromStorage(usuario.getUrlImage());
 
         tvNombreUsuario.setText(usuario.getFullname());
         jds = new JuegoDataSource(this);

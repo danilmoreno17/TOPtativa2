@@ -35,7 +35,7 @@ public class FormUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_user);
         setElems();
-        ds = new UserDataSource(this);
+        ds = new UserDataSource(FormUserActivity.this);
         rb_op1.setChecked(true);
         iv_check.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +135,7 @@ public class FormUserActivity extends AppCompatActivity {
 
     private boolean register(){
         User u = new User();
+        boolean result = false;
         try{
             ds.open();
             int op = (rb_op1.isChecked())?1:(rb_op2.isChecked())?2:(rb_op3.isChecked())?3:4;
@@ -145,10 +146,11 @@ public class FormUserActivity extends AppCompatActivity {
             u.setSus_method(op);
             String type = iv_check.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.img_checkbox_checked).getConstantState())?"C":"J";
             u.setUser_type(type);
-            return (ds.insert(u)>0);
+            result = (ds.insert(u)>0);
         }catch(SQLException ex){
-
+            ex.getMessage();
+            result= false;
         }
-        return false;
+        return result;
     }
 }

@@ -44,6 +44,7 @@ public class AdminActivity extends AppCompatActivity {
         if(((EurekaAppAplication)getApplication()).UsuarioActual!=null)
             usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
         iv_User=(ImageView)findViewById(R.id.iv_user);
+        /*
         iv_User.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +54,8 @@ public class AdminActivity extends AppCompatActivity {
                 startActivityForResult(galleryIntent, PICKFILE_RESULT_CODE);
             }
         });
-        loadImageFromStorage(usuario.getUrlImage());
+        */
+        //loadImageFromStorage(usuario.getUrlImage());
         tv_nom_user.setText(usuario.getFullname().toString());
         cv_crearSorteo = (CardView) findViewById(R.id.cv_crearSorteo);
         cv_misSorteos = (CardView)findViewById(R.id.cv_misSorteos);

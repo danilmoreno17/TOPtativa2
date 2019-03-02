@@ -23,20 +23,20 @@ public class adaSorteosLV extends BaseAdapter {
 
 
     public adaSorteosLV(Context context, ArrayList<Juego> listaJuego){
-        this.layoutInflater =(LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.c=context;
         this.lista=listaJuego;
+        this.layoutInflater =(LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
     @Override
     public int getCount() {
-        return lista.size();
+        return this.lista.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lista.get(position);
+        return this.lista.get(position);
     }
 
     @Override
@@ -55,11 +55,11 @@ public class adaSorteosLV extends BaseAdapter {
         tv_premio_juego =(TextView)view.findViewById(R.id.tv_premio_juego);
         tv_costo_juego =(TextView)view.findViewById(R.id.tv_costo_juego);
         tv_nom_juego =(TextView)view.findViewById(R.id.tv_nom_juego);
-        juego = (Juego)lista.get(position);
+        juego = (Juego)this.lista.get(position);
 
         tv_fecha_juego.setText(juego.getFecha_juego());
-        tv_premio_juego.setText(String.valueOf(juego.getPremio_mayor()));
-        tv_costo_juego.setText(String.valueOf(juego.getCuota()));
+        tv_premio_juego.setText("$"+String.valueOf(juego.getPremio_mayor()));
+        tv_costo_juego.setText("$"+String.valueOf(juego.getCuota()));
         tv_nom_juego.setText(String.valueOf(juego.getNombre_juego()));
 
         return view;

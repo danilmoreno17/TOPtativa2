@@ -73,7 +73,7 @@ public class MenuActivity extends AppCompatActivity {
                             if(usuario.getUser_type().equals("C"))
                                 i = new Intent(MenuActivity.this,AdminActivity.class);
                             else
-                                i = new Intent(MenuActivity.this,LoteriaNacionalActivity.class);
+                                i = new Intent(MenuActivity.this,JugarSorteoActivity.class);
                         }
                         startActivity(i);
 

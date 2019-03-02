@@ -33,7 +33,7 @@ public class MisSorteosActivity extends AppCompatActivity {
             usuario = ((EurekaAppAplication)getApplication()).UsuarioActual;
         tv_nom_user=(TextView)findViewById(R.id.tvNombreUsuario);
         iv_User=(ImageView)findViewById(R.id.iv_user);
-        loadImageFromStorage(usuario.getUrlImage());
+        //loadImageFromStorage(usuario.getUrlImage());
         pds = new PublicacionDataSource(this);
         List<Publicacion> mPublicacionList = new ArrayList<>();
         //Cargar Usuario

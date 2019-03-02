@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "eurekapp";
-    public static final int DATABASE_VERSION  =1;
+    public static final int DATABASE_VERSION  =2;
 
 
     public static final String TBL_USER ="user";
@@ -32,7 +32,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PREMIO_MAYOR="premio_mayor";
     public static final String ESTADO_JUEGO="estado_juego";
     public static final String TIPO_JUEGO="tipo_juego";
-    public static final String NOMBRE_PREMIO="tipo_juego";
+    public static final String NOMBRE_PREMIO="nombre_premio";
     public static final String CUOTA = "cuota";
 
 
@@ -47,13 +47,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String ID_PUBLICACION="id";
     public static final String ID_USUARIO_PUBLICACION="id_usuario";
     public static final String ID_JUEGO_PUBLICACION="id_juego";
+    public static final String NUMERO_PREMIADO="numero_premiado";
     public static final String ESTADO_PUBLICACION="estado";
     public static final String FECHA_PUBLICACION="fecha_publicacion";
     public static final String FECHA_TOPE =  "fecha_tope";
 
     private static final String CREATE_PUBLICACION ="CREATE TABLE "+TBL_PUBLICACION+" ("+ID_PUBLICACION+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            ID_USUARIO_PUBLICACION+" INTEGER,"+ID_JUEGO_PUBLICACION+" INTEGER,"+ESTADO_PUBLICACION+" CHAR(3),"+FECHA_PUBLICACION+" VARCHAR(50),"+
-            FECHA_TOPE+" VARCHAR(50));";
+            ID_USUARIO_PUBLICACION+" INTEGER,"+ID_JUEGO_PUBLICACION+" INTEGER,"+
+            ESTADO_PUBLICACION+" CHAR(3),"+FECHA_PUBLICACION+" VARCHAR(50),"+
+            NUMERO_PREMIADO+" VARCHAR(25),"+FECHA_TOPE+" VARCHAR(50));";
 
 
     public static final String TBL_DETALLES_JUEGO="detalles_juego";
@@ -98,5 +100,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TBL_DETALLES_JUEGO);
         db.execSQL("DROP TABLE IF EXISTS "+TBL_USER);
         db.execSQL("DROP TABLE IF EXISTS "+TBL_JUEGO);
+        onCreate(db);
     }
 }

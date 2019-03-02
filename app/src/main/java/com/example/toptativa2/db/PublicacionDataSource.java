@@ -47,8 +47,11 @@ public class PublicacionDataSource {
         p.setEstado(c.getString(c.getColumnIndex(DataBaseHelper.ESTADO_PUBLICACION)));
         p.setFecha_publicacion(c.getString(c.getColumnIndex(DataBaseHelper.FECHA_PUBLICACION)));
         p.setFecha_tope(c.getString(c.getColumnIndex(DataBaseHelper.FECHA_TOPE)));
+        p.setNumero_premiado(c.getString(c.getColumnIndex(DataBaseHelper.NUMERO_PREMIADO)));
         return p;
     }
+
+
 
     public long insert(Publicacion p){
         ContentValues v = publicacionValues(p);
@@ -59,6 +62,14 @@ public class PublicacionDataSource {
     public long update(Publicacion p){
         ContentValues v =publicacionValues(p);
         String where = DataBaseHelper.ID_PUBLICACION+"="+p.getId();
+        long resp = database.update(DataBaseHelper.TBL_PUBLICACION,v,where,null);
+        return resp;
+    }
+
+    public long numero_premiado(int id, String premiado){
+        ContentValues v =new ContentValues();
+        v.put(DataBaseHelper.NUMERO_PREMIADO,premiado);
+        String where = DataBaseHelper.ID_PUBLICACION+"="+id;
         long resp = database.update(DataBaseHelper.TBL_PUBLICACION,v,where,null);
         return resp;
     }
@@ -79,6 +90,7 @@ public class PublicacionDataSource {
                     tabla_principal+"."+DataBaseHelper.ESTADO_PUBLICACION+","+
                     tabla_principal+"."+DataBaseHelper.FECHA_PUBLICACION+","+
                     tabla_principal+"."+DataBaseHelper.FECHA_TOPE+","+
+                    tabla_principal+"."+DataBaseHelper.NUMERO_PREMIADO+","+
                     tabla_juego+"."+DataBaseHelper.NOMBRE_JUEGO+","+
                     tabla_juego+"."+DataBaseHelper.PREMIO_MAYOR+" "+
                     "FROM "+tabla_principal+" " +
@@ -95,6 +107,38 @@ public class PublicacionDataSource {
         }
 
         return lista;
+    }
+
+    public Publicacion getPublicacion(int id_usuario, int id_juego){
+        Publicacion p=null;
+        Cursor c = null;
+        try{
+            String tabla_principal = DataBaseHelper.TBL_PUBLICACION;
+            String tabla_juego = DataBaseHelper.TBL_JUEGO;
+            String tabla_usuario = DataBaseHelper.TBL_USER;
+            String where= "WHERE "+DataBaseHelper.ID_USUARIO_PUBLICACION+"="+id_usuario+" AND "+tabla_principal+"."+DataBaseHelper.NUMERO_PREMIADO+"="+id_juego;
+
+            String query =  "SELECT "+tabla_principal+"."+DataBaseHelper.ID_PUBLICACION+","+
+                    tabla_principal+"."+DataBaseHelper.ID_USUARIO_PUBLICACION+","+
+                    tabla_principal+"."+DataBaseHelper.ID_JUEGO_PUBLICACION+","+
+                    tabla_principal+"."+DataBaseHelper.ESTADO_PUBLICACION+","+
+                    tabla_principal+"."+DataBaseHelper.FECHA_PUBLICACION+","+
+                    tabla_principal+"."+DataBaseHelper.FECHA_TOPE+","+
+                    tabla_principal+"."+DataBaseHelper.NUMERO_PREMIADO+","+
+                    tabla_juego+"."+DataBaseHelper.NOMBRE_JUEGO+","+
+                    tabla_juego+"."+DataBaseHelper.PREMIO_MAYOR+" "+
+                    "FROM "+tabla_principal+" " +
+                    "INNER JOIN "+tabla_juego+" ON "+tabla_juego+"."+DataBaseHelper.ID_JUEGO+"="+tabla_principal+"."+DataBaseHelper.ID_JUEGO_PUBLICACION+" "+
+                    where;
+            c = database.rawQuery(query, null);
+            if(c.getCount()>0){
+                c.moveToFirst();
+                p=cursorPublicacion(c);
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }
+        return p;
     }
 
 }

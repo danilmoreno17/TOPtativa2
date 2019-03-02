@@ -115,7 +115,22 @@ public class JuegoDataSource {
     }
 
 
+    public int getLast(){
+        int id =0;
+        Cursor c = null;
+        try{
 
+            String query = "SELECT last_insert_rowid() FROM "+DataBaseHelper.TBL_JUEGO+" LIMIT 1;";
+            c = database.rawQuery(query, null);
+            if(c.getCount()>0){
+                c.moveToFirst();
+                id=c.getInt(c.getInt(0));
+            }
+        }catch(SQLException ex){
+            id=0;
+        }
+        return id;
+    }
 
 
 }
