@@ -43,7 +43,7 @@
             <TextView
                 android:id="@+id/tvNumTicket"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 ndroid:textColor="@color/white"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif-black"
@@ -52,11 +52,11 @@
             <TextView
                 android:id="@+id/tvFechaPremio"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 ndroid:textColor="@color/white"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif-black"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:text="BINGO"/>
         </LinearLayout>
     </LinearLayout>

@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Fecha del Sorteo"
-                    android:inputType="datetime"
+                    android:inputType="none"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

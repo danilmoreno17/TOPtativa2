@@ -1,18 +1,25 @@
 package com.example.toptativa2.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.toptativa2.EurekaAppAplication;
 import com.example.toptativa2.Models.Premiacion;
 import com.example.toptativa2.Models.Publicacion;
 import com.example.toptativa2.R;
 import com.example.toptativa2.db.PremiacionDataSource;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +50,9 @@ public class adaMisSorteosRV extends RecyclerView.Adapter<JuegoViewHolder>{
             pds.open();
             mPremiacionList = pds.premiacionListByPublicacion(mPublicacionList.get(i).getId());
             juegoViewHolder.mNumTicket.setText(mPremiacionList.size()+" tickets comprados");
+            File f=new File(((EurekaAppAplication)mContext.getApplicationContext()).UsuarioActual.getUrlImage());
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            juegoViewHolder.ivLogo.setImageBitmap(b);
         }catch (Exception e){
 
         }
@@ -56,10 +66,12 @@ public class adaMisSorteosRV extends RecyclerView.Adapter<JuegoViewHolder>{
 }
 class JuegoViewHolder extends RecyclerView.ViewHolder{
     TextView mNombreJuego, mNumTicket, mFechaPremio;
+    ImageView ivLogo;
     JuegoViewHolder(View itemView) {
         super(itemView);
         mNombreJuego = (TextView)itemView.findViewById(R.id.tvNombreJuego);
         mNumTicket = (TextView)itemView.findViewById(R.id.tvNumTicket);
         mFechaPremio = (TextView)itemView.findViewById(R.id.tvFechaPremio);
+        ivLogo = (ImageView)itemView.findViewById(R.id.iv_logo);
     }
 }

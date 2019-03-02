@@ -101,7 +101,7 @@ public class JuegoDataSource {
         Juego juego = new Juego();
         Cursor c = null;
         try{
-            String where= DataBaseHelper.ESTADO_JUEGO+"=1 and "+DataBaseHelper.NOMBRE_JUEGO+"="+titulo;
+            String where= DataBaseHelper.ESTADO_JUEGO+"=1 and "+DataBaseHelper.NOMBRE_JUEGO+"='"+titulo+"'";
             c=database.query(DataBaseHelper.TBL_JUEGO,allColumns,where,null,null,null,null);
             c.moveToFirst();
             while(!c.isAfterLast()){

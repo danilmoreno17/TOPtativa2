@@ -45,6 +45,7 @@ public class LoginActivity extends Activity {
                     user=loadUser();
                     if(user!=null){
                         if(user.getPassword().equals(et_pass.getText().toString())){
+                            user.loadURL();
                             ((EurekaAppAplication)getApplication()).UsuarioActual = user;
                             if(user.getUser_type().equals("C"))
                                 startActivity(new Intent(LoginActivity.this,AdminActivity.class));
