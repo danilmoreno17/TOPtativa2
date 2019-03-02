@@ -13,6 +13,9 @@ public class  LoteriaNacionalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loteria_nacional);
         ivloterianacional = (ImageView)findViewById(R.id.ivloterianacional);
-        Picasso.get().load("https://www.loteria.com.ec/Images/Thumb/--Files--boletines--T16221__jpg?width=768&height=1100").into(ivloterianacional);
+        //Picasso.get().load("https://www.loteria.com.ec/Images/Thumb/--Files--boletines--T16221__jpg?width=768&height=1100").into(ivloterianacional);
+
+        String foto = "https://www.loteria.com.ec/Images/Thumb/--Files--boletines--T16221__jpg?width=768&height=1100";
+        Picasso.with(LoteriaNacionalActivity.this).load(foto).into(ivloterianacional);
     }
 }

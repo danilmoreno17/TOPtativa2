@@ -69,11 +69,12 @@ public class MenuActivity extends AppCompatActivity {
                         Intent i =null;
                         int position = recyclerView.getChildAdapterPosition(child);
 
-                        if(position==0){//warehouse
-                           i = new Intent(MenuActivity.this,AdminActivity.class);
+                        if(position==0){
+                            if(usuario.getUser_type().equals("C"))
+                                i = new Intent(MenuActivity.this,AdminActivity.class);
+                            else
+                                i = new Intent(MenuActivity.this,LoteriaNacionalActivity.class);
                         }
-
-
                         startActivity(i);
 
                         return true;
