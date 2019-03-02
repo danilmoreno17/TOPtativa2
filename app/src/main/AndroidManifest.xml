@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/LoginActivityTheme">
-        <activity android:name=".EditarSorteoActivity"></activity>
+        <activity android:name=".ListaNumerosActivity"></activity>
+        <activity android:name=".EditarSorteoActivity" />
         <activity android:name=".JugarSorteoActivity" />
         <activity android:name=".FormUserActivity" />
         <activity android:name=".MainActivity" />

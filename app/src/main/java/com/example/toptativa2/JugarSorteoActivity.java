@@ -2,6 +2,7 @@ package com.example.toptativa2;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.widget.Toast;
 import com.example.toptativa2.Adapters.adaSorteosLV;
 import com.example.toptativa2.Dialogs.SimpleConfirmDialog;
 import com.example.toptativa2.Models.Juego;
+import com.example.toptativa2.Models.Publicacion;
 import com.example.toptativa2.Models.User;
 import com.example.toptativa2.db.JuegoDataSource;
+import com.example.toptativa2.db.PublicacionDataSource;
 
 import java.util.ArrayList;
 
@@ -27,8 +30,10 @@ public class JugarSorteoActivity extends AppCompatActivity {
     private adaSorteosLV adapter;
     private User usuario;
     private JuegoDataSource jds;
+    private PublicacionDataSource pds;
 
     private Juego juego_procesado;
+    public static Publicacion publicacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class JugarSorteoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jugar_sorteo);
 
         jds = new JuegoDataSource(JugarSorteoActivity.this);
+        pds = new PublicacionDataSource(JugarSorteoActivity.this);
         tv_nom_user=(TextView)findViewById(R.id.tv_nom_user);
         lv_mis_juegos=(ListView)findViewById(R.id.lv_mis_juegos);
 
@@ -53,6 +59,10 @@ public class JugarSorteoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 preguardar(lista.get(position));
+                startActivity(new Intent(JugarSorteoActivity.this,ListaNumerosActivity.class));
+
+                /*
+
                 SimpleConfirmDialog dialog = new SimpleConfirmDialog(JugarSorteoActivity.this,"Info", "Deseas participar?",R.drawable.androidtutoria);
                 dialog.setPositive("Yes",new DialogInterface.OnClickListener() {
                     @Override
@@ -68,6 +78,7 @@ public class JugarSorteoActivity extends AppCompatActivity {
                     }
                 });
                 dialog.make();
+                */
             }
         });
 
@@ -89,6 +100,15 @@ public class JugarSorteoActivity extends AppCompatActivity {
 
     private void preguardar(Juego j){
         juego_procesado=j;
+        publicacion= new Publicacion();
+        try{
+            pds.open();
+            publicacion=pds.getPublicacion(usuario.getId(),juego_procesado.getId());
+
+        }catch(SQLException ex){
+
+        }
+
     }
     /*
     private boolean saveJuego(){

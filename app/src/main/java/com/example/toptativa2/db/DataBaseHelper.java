@@ -69,6 +69,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             ID_JUEGO_DETALLE_JUEGO+" INTEGER,"+PREMIO_EFECTIVO+" REAL,"+
             PREMIO_NOMBRE+" VARCHAR(50),"+NUM_GANADOR+" VARCHAR(30));";
 
+
+    public static final String TBL_NUMERO_JUEGO="numero_juego";
+    public static final String ID_NUMERO_JUEGO="id";
+    public static final String ID_JUEGO_NUMERO_JUEGO="id_juego";
+    public static final String ID_USER_NUMERO_JUEGO="id_user";
+    public static final String NUMERO ="numero_juego";
+
+    private static final String CREATE_NUMERO_JUEGO = "CREATE TABLE "+TBL_NUMERO_JUEGO+" ("+ID_NUMERO_JUEGO+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+            ID_JUEGO_NUMERO_JUEGO+" INTEGER,"+ID_USER_NUMERO_JUEGO+" INTEGER,"+NUMERO+" VARCHAR(20));";
+
+
     public static final String TBL_PREMIACION = "premiacion";
     public static final String ID_PREMIACION="id";
     public static final String ID_PREMIACION_USUARIO ="id_usuario";
@@ -91,6 +102,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_DETALLE_JUEGO);
         db.execSQL(CREATE_PUBLICACION);
         db.execSQL(CREATE_PREMIACION);
+        db.execSQL(CREATE_NUMERO_JUEGO);
     }
 
     @Override
@@ -100,6 +112,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TBL_DETALLES_JUEGO);
         db.execSQL("DROP TABLE IF EXISTS "+TBL_USER);
         db.execSQL("DROP TABLE IF EXISTS "+TBL_JUEGO);
+        db.execSQL("DROP TABLE IF EXISTS "+TBL_NUMERO_JUEGO);
         onCreate(db);
     }
 }
